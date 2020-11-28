@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 09:20:23 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/11/10 00:22:12 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/11/28 18:34:15 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		player(t_data *data)
 
 	line = NULL;
 	if (get_next_line(0, &line) != 1)
-		return (1);
+		dprintf(1, "0 0\n");
 	data->player = 'X';
 	if (ft_strstr(line, "p1"))
 		data->player = 'O';
@@ -33,7 +33,7 @@ int		map_size(t_valeur *valeur, t_data *data)
 
 	line = NULL;
 	if (get_next_line(0, &line) != 1)
-		return (1);
+		dprintf(1, "0 0\n");
 	if (ft_strstr(line, "Plateau"))
 	{
 		temp = ft_strsplit(line, ' ');
@@ -43,7 +43,7 @@ int		map_size(t_valeur *valeur, t_data *data)
 	}
 	ft_strdel(&line);
 	if (!(data->map = (char**)malloc(sizeof(char*) * valeur->y)))
-		return (1);
+		dprintf(1, "0 0\n");
 	return (0);
 }
 
@@ -60,17 +60,15 @@ int		get_map(t_data *data, t_valeur *valeur)
 		ft_strdel(&line);
 	}
 	if (get_next_line(0, &line) != 1)
-		perror("line2");
+		dprintf(1, "0 0\n");
 	ft_strdel(&line);
 	while (i < valeur->y)
 	{
 		if (get_next_line(0, &line) != 1)
-			return (1);
+			dprintf(1, "0 0\n");
 		data->map[i++] = ft_strdup(&line[4]);
-		dprintf(2, "%s\n", &line[4]);
 		ft_strdel(&line);
 	}
-	dprintf(2, "\n");
 	valeur->flag = 1;
 	return (0);
 }
@@ -81,7 +79,7 @@ int		piece_size(t_valeur *valeur)
 	char	*line;
 
 	if (get_next_line(0, &line) != 1)
-		perror("pieceSize");
+		dprintf(1, "0 0\n");
 	if (ft_strstr(line, "Piece"))
 	{
 		temp = ft_strsplit(line, ' ');
@@ -104,11 +102,9 @@ int		piece(t_data *data, t_valeur *valeur)
 	while (i < valeur->xp)
 	{
 		if (get_next_line(0, &line) != 1)
-			perror("piece");
+			dprintf(1, "0 0\n");
 		data->piece[i++] = ft_strdup(line);
 		ft_strdel(&line);
 	}
-	for (i = 0; i < valeur->xp ; i++)
-		dprintf(2,"%s\n", data->piece[i]);
 	return (0);
 }
