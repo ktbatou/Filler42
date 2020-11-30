@@ -35,6 +35,8 @@ typedef  struct s_valeur
 	int		index1;
 	int		tempx;
 	int		tempy;
+	int		tokenx;
+	int		tokeny;
 }              t_valeur;
 
 typedef		struct s_map

@@ -6,13 +6,13 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:55:43 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/11/26 22:48:57 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/11/30 18:34:25 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int				main(void)
+int	main(void)
 {
 	t_data		*data;
 	t_valeur	*valeur;

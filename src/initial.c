@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:55:48 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/11/08 16:55:43 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/11/30 18:16:48 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void	initial(t_data *data, t_valeur *valeur, t_map *map)
 		valeur->flag = 0;
 		valeur->index = 0;
 		valeur->index1 = 0;
+		valeur->i = 0;
+		valeur->j = 0;
+		valeur->tokenx = 0;
+		valeur->tokeny = 0;
 	}
 	if (map != NULL)
 	{
