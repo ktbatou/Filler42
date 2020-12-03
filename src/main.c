@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:55:43 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/12/03 01:35:54 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/03 03:55:53 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_structures(t_map *map, t_data *data, t_valeur *valeur)
 		free(valeur);
 }
 
-int	main(void)
+int		main(void)
 {
 	t_data		*data;
 	t_valeur	*valeur;
@@ -32,13 +32,13 @@ int	main(void)
 	valeur = (t_valeur*)malloc(sizeof(t_valeur));
 	map = (t_map*)malloc(sizeof(t_map));
 	initial(data, valeur, map);
-	if (player(data) !=  1|| map_size(valeur, data) != 1)
+	if (player(data) != 1 || map_size(valeur, data) != 1)
 		perror("Error.");
 	while (1)
 	{
 		if (get_map(data, valeur) == 0 || piece(data, valeur) == 0)
 		{
-			dprintf(1, "0 0\n");
+			write(1, "0 0\n", 4);
 			break ;
 		}
 		map_num(valeur, data, map);
@@ -49,5 +49,3 @@ int	main(void)
 	free_structures(map, data, valeur);
 	return (0);
 }
-
-

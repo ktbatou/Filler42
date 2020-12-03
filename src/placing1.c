@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   placing2.c                                         :+:      :+:    :+:   */
+/*   placing1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 22:50:45 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/12/02 19:46:58 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/03 04:53:07 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		placing_piece(t_map *map, t_valeur *valeur)
 		}
 		valeur->i++;
 	}
-	dprintf(1, "%d %d\n", valeur->tokenx, valeur->tokeny);
+	print_cords(valeur);
 	free_heat(map ,valeur);
 }
 
@@ -139,4 +139,22 @@ int			get_score(int x, int y, t_map *map, t_valeur *valeur)
 		i++;
 	}
 	return (score);
+}
+
+void		print_cords(t_valeur *v)
+{
+	char *x;
+	char *y;
+	int i;
+
+	i = 0;
+	x = ft_itoa(v->tokenx);
+	y = ft_itoa(v->tokeny);
+	while (x[i] && i <= 1)
+		write(1, &x[i++], 1);
+	write(1, " ", 1);
+	i = 0;
+	while (y[i] && i <= 1)
+		write(1, &y[i++], 1);
+	write(1, "\n", 1);
 }

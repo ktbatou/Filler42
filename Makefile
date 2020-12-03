@@ -6,7 +6,7 @@
 #    By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/10 12:09:56 by ktbatou           #+#    #+#              #
-#    Updated: 2020/11/25 01:54:36 by ktbatou          ###   ########.fr        #
+#    Updated: 2020/12/03 04:27:18 by ktbatou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,12 @@ LIB = src/gnl/libft/ft_atoi.o	src/gnl/libft/ft_bzero.o   src/gnl/libft/ft_isalnu
 	src/gnl/libft/ft_strsub.o	src/gnl/libft/ft_strtrim.o	src/gnl/libft/ft_tolower.o	src/gnl/libft/ft_toupper.o
 
 OBJ =  src/main.o src/detail.o src/initial.o src/gnl/get_next_line.o src/point_to_num.o src/heat_map.o \
-		 src/free.o src/placing2.o $(LIB)
+		 src/free.o src/placing1.o src/placing2.o $(LIB)
 	#src/heat_map.o src/main.o src/get_piece.o src/check_score.o $(LIB)
 
 HDR = -I ./src/include -I ./src/libft -I ./src/gnl
 
-CFLAGS = $(HDR) -g -Wall -Werror -Wextra
+CFLAGS = $(HDR) -Wall -Werror -Wextra
 
 CC = gcc 
 

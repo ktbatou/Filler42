@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 16:47:20 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/11/26 23:35:03 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/03 03:16:24 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,24 @@ void	heat_map(t_valeur *valeur, t_map *map)
 
 void	heating(t_map *map, int i, int j)
 {
-	if (J_BORDER && map->heat[i][j + 1] == 0)
+	if ((j >= 0 && j < 16) && (map->heat[i][j + 1] == 0))
 		map->heat[i][j + 1] = map->heater;
-	if (J_ABSO && map->heat[i][j - 1] == 0)
+	if ((j > 0 && j <= 16) && map->heat[i][j - 1] == 0)
 		map->heat[i][j - 1] = map->heater;
-	if (I_BORDER && map->heat[i + 1][j] == 0)
+	if ((i >= 0 && i < 14) && map->heat[i + 1][j] == 0)
 		map->heat[i + 1][j] = map->heater;
-	if (I_ABSO && map->heat[i - 1][j] == 0)
+	if ((i > 0 && i <= 14) && map->heat[i - 1][j] == 0)
 		map->heat[i - 1][j] = map->heater;
-	if (J_BORDER && I_BORDER && map->heat[i + 1][j + 1] == 0)
+	if ((j >= 0 && j < 16) &&
+		(i >= 0 && i < 14) && map->heat[i + 1][j + 1] == 0)
 		map->heat[i + 1][j + 1] = map->heater;
-	if (I_BORDER && J_ABSO && map->heat[i + 1][j - 1] == 0)
+	if ((i >= 0 && i < 14) &&
+		(j > 0 && j <= 16) && map->heat[i + 1][j - 1] == 0)
 		map->heat[i + 1][j - 1] = map->heater;
-	if (J_BORDER && I_ABSO && map->heat[i - 1][j + 1] == 0)
+	if ((j >= 0 && j < 16) &&
+		(i > 0 && i <= 14) && map->heat[i - 1][j + 1] == 0)
 		map->heat[i - 1][j + 1] = map->heater;
-	if (I_ABSO && J_ABSO && map->heat[i - 1][j - 1] == 0)
+	if ((i > 0 && i <= 14) &&
+		(j > 0 && j <= 16) && map->heat[i - 1][j - 1] == 0)
 		map->heat[i - 1][j - 1] = map->heater;
 }
