@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 09:20:23 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/11/28 18:34:15 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/03 01:44:03 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int		player(t_data *data)
 
 	line = NULL;
 	if (get_next_line(0, &line) != 1)
-		dprintf(1, "0 0\n");
+		return (0);
 	data->player = 'X';
 	if (ft_strstr(line, "p1"))
 		data->player = 'O';
 	ft_strdel(&line);
-	return (0);
+	return (1);
 }
 
 int		map_size(t_valeur *valeur, t_data *data)
@@ -33,7 +33,7 @@ int		map_size(t_valeur *valeur, t_data *data)
 
 	line = NULL;
 	if (get_next_line(0, &line) != 1)
-		dprintf(1, "0 0\n");
+		return (0);
 	if (ft_strstr(line, "Plateau"))
 	{
 		temp = ft_strsplit(line, ' ');
@@ -41,10 +41,14 @@ int		map_size(t_valeur *valeur, t_data *data)
 		valeur->x = ft_atoi(temp[2]);
 		free_temp(temp);
 	}
-	ft_strdel(&line);
+	else
+	{
+		ft_strdel(&line);
+		return (0);
+	}
 	if (!(data->map = (char**)malloc(sizeof(char*) * valeur->y)))
-		dprintf(1, "0 0\n");
-	return (0);
+		return (0);
+	return (1);
 }
 
 int		get_map(t_data *data, t_valeur *valeur)
@@ -56,21 +60,21 @@ int		get_map(t_data *data, t_valeur *valeur)
 	if (valeur->flag == 1)
 	{
 		if (get_next_line(0, &line) != 1)
-			dprintf(1, "0 0\n");
+			return (0);
 		ft_strdel(&line);
 	}
 	if (get_next_line(0, &line) != 1)
-		dprintf(1, "0 0\n");
+		return (0);
 	ft_strdel(&line);
 	while (i < valeur->y)
 	{
 		if (get_next_line(0, &line) != 1)
-			dprintf(1, "0 0\n");
+			return (0);
 		data->map[i++] = ft_strdup(&line[4]);
 		ft_strdel(&line);
 	}
 	valeur->flag = 1;
-	return (0);
+	return (1);
 }
 
 int		piece_size(t_valeur *valeur)
@@ -79,7 +83,7 @@ int		piece_size(t_valeur *valeur)
 	char	*line;
 
 	if (get_next_line(0, &line) != 1)
-		dprintf(1, "0 0\n");
+		return (0);
 	if (ft_strstr(line, "Piece"))
 	{
 		temp = ft_strsplit(line, ' ');
@@ -87,8 +91,13 @@ int		piece_size(t_valeur *valeur)
 		valeur->yp = ft_atoi(temp[2]);
 		free_temp(temp);
 	}
-	ft_strdel(&line);
-	return (0);
+	else
+	{
+		ft_strdel(&line);
+		return (0);
+	}
+	
+	return (1);
 }
 
 int		piece(t_data *data, t_valeur *valeur)
@@ -97,14 +106,15 @@ int		piece(t_data *data, t_valeur *valeur)
 	int		i;
 
 	i = 0;
-	piece_size(valeur);
+	if (piece_size(valeur) == 0)
+		return (0);
 	data->piece = (char**)malloc(sizeof(char*) * valeur->xp);
 	while (i < valeur->xp)
 	{
 		if (get_next_line(0, &line) != 1)
-			dprintf(1, "0 0\n");
+			return (0);
 		data->piece[i++] = ft_strdup(line);
 		ft_strdel(&line);
 	}
-	return (0);
+	return (1);
 }

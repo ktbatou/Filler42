@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 22:50:45 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/11/30 18:32:30 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/02 19:46:58 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void		placing_piece(t_map *map, t_valeur *valeur)
 	valeur->i = 0;
 	temp = 0;
 	flag = 0;
+	valeur->tokenx = 0;
+	valeur->tokeny = 0;
 	while (valeur->i < valeur->y)
 	{
 		valeur->j = 0;
@@ -43,6 +45,7 @@ void		placing_piece(t_map *map, t_valeur *valeur)
 		valeur->i++;
 	}
 	dprintf(1, "%d %d\n", valeur->tokenx, valeur->tokeny);
+	free_heat(map ,valeur);
 }
 
 int			position(t_map *map, t_valeur *valeur)

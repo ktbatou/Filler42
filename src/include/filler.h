@@ -74,4 +74,5 @@ void    placing_piece(t_map *map, t_valeur *valeur);
 int		position(t_map *map, t_valeur *valeur);
 int     it_fits(int x, int y,t_map *map, t_valeur *valeur);
 int		get_score(int x, int y,t_map *map, t_valeur *valeur);
+void	initial_valeur(t_valeur *valeur);
 #endif

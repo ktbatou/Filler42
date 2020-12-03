@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:55:48 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/11/30 18:16:48 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/02 19:40:47 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,7 @@ void	initial(t_data *data, t_valeur *valeur, t_map *map)
 		data->piece = 0;
 	}
 	if (valeur != NULL)
-	{
-		valeur->x = 0;
-		valeur->y = 0;
-		valeur->xp = 0;
-		valeur->yp = 0;
-		valeur->flag = 0;
-		valeur->index = 0;
-		valeur->index1 = 0;
-		valeur->i = 0;
-		valeur->j = 0;
-		valeur->tokenx = 0;
-		valeur->tokeny = 0;
-	}
+		initial_valeur(valeur);
 	if (map != NULL)
 	{
 		map->heat = 0;
@@ -43,4 +31,19 @@ void	initial(t_data *data, t_valeur *valeur, t_map *map)
 		map->x = 0;
 		map->y = 0;
 	}
+}
+
+void	initial_valeur(t_valeur *valeur)
+{
+	valeur->x = 0;
+	valeur->y = 0;
+	valeur->xp = 0;
+	valeur->yp = 0;
+	valeur->flag = 0;
+	valeur->index = 0;
+	valeur->index1 = 0;
+	valeur->i = 0;
+	valeur->j = 0;
+	valeur->tokenx = 0;
+	valeur->tokeny = 0;
 }
