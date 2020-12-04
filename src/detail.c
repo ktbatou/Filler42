@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 09:20:23 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/12/03 01:44:03 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/04 02:41:50 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int		piece_size(t_valeur *valeur)
 		ft_strdel(&line);
 		return (0);
 	}
-	
 	return (1);
 }
 

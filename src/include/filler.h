@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 03:19:03 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/12/03 04:51:00 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/04 03:01:10 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ typedef	struct	s_map
 	int		heater;
 	int		x;
 	int		y;
+	int		tempx;
+	int		tempy;
+	int		flag;
+	int		flag1;
 }				t_map;
 
 int				player(t_data *data);
@@ -72,5 +76,7 @@ int				get_score(int x, int y, t_map *map, t_valeur *valeur);
 void			initial_valeur(t_valeur *valeur);
 void			print_cords(t_valeur *v);
 void			cords(t_map *map, t_valeur *valeur);
+int				score1(int i, int j, t_map *map, t_valeur *valeur);
+int				checker(int i, int j, t_map *map, t_valeur *valeur);
 
 #endif
