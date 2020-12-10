@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 16:47:20 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/12/03 03:16:24 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/10 23:24:50 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	heat_map(t_valeur *valeur, t_map *map)
 			while (j < valeur->x)
 			{
 				if (map->heat[i][j] == map->temp)
-					heating(map, i, j);
+					heating(map, i, j, valeur);
 				j++;
 			}
 			i++;
@@ -39,28 +39,37 @@ void	heat_map(t_valeur *valeur, t_map *map)
 		map->heater++;
 		index++;
 	}
+	/*for (int i = 0; i < valeur->y; i++)
+	{
+		for (int j = 0; j < valeur->x; j++)
+		{
+			 printf("% d", map->heat[i][j]);
+		}
+		printf("\n");
+	}
+	printf("\n");*/
 }
 
-void	heating(t_map *map, int i, int j)
+void	heating(t_map *map, int i, int j, t_valeur *valeur)
 {
-	if ((j >= 0 && j < 16) && (map->heat[i][j + 1] == 0))
+	if ((j >= 0 && j < (valeur->x - 1)) && (map->heat[i][j + 1] == 0))
 		map->heat[i][j + 1] = map->heater;
-	if ((j > 0 && j <= 16) && map->heat[i][j - 1] == 0)
+	if ((j > 0 && j <= valeur->x - 1) && map->heat[i][j - 1] == 0)
 		map->heat[i][j - 1] = map->heater;
-	if ((i >= 0 && i < 14) && map->heat[i + 1][j] == 0)
+	if ((i >= 0 && i < valeur->y - 1) && map->heat[i + 1][j] == 0)
 		map->heat[i + 1][j] = map->heater;
-	if ((i > 0 && i <= 14) && map->heat[i - 1][j] == 0)
+	if ((i > 0 && i <= valeur->y - 1) && map->heat[i - 1][j] == 0)
 		map->heat[i - 1][j] = map->heater;
-	if ((j >= 0 && j < 16) &&
-		(i >= 0 && i < 14) && map->heat[i + 1][j + 1] == 0)
+	if ((j >= 0 && j < valeur->x - 1) &&
+		(i >= 0 && i < valeur->y - 1) && map->heat[i + 1][j + 1] == 0)
 		map->heat[i + 1][j + 1] = map->heater;
-	if ((i >= 0 && i < 14) &&
-		(j > 0 && j <= 16) && map->heat[i + 1][j - 1] == 0)
+	if ((i >= 0 && i < valeur->y - 1) &&
+		(j > 0 && j <= valeur->x) && map->heat[i + 1][j - 1] == 0)
 		map->heat[i + 1][j - 1] = map->heater;
-	if ((j >= 0 && j < 16) &&
-		(i > 0 && i <= 14) && map->heat[i - 1][j + 1] == 0)
+	if ((j >= 0 && j < valeur->x - 1) &&
+		(i > 0 && i <= valeur->y - 1) && map->heat[i - 1][j + 1] == 0)
 		map->heat[i - 1][j + 1] = map->heater;
-	if ((i > 0 && i <= 14) &&
-		(j > 0 && j <= 16) && map->heat[i - 1][j - 1] == 0)
+	if ((i > 0 && i <= valeur->y - 1) &&
+		(j > 0 && j <= valeur->x - 1) && map->heat[i - 1][j - 1] == 0)
 		map->heat[i - 1][j - 1] = map->heater;
 }
