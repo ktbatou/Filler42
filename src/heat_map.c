@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 16:47:20 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/12/10 23:24:50 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/11 16:48:48 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,6 @@ void	heat_map(t_valeur *valeur, t_map *map)
 		map->heater++;
 		index++;
 	}
-	/*for (int i = 0; i < valeur->y; i++)
-	{
-		for (int j = 0; j < valeur->x; j++)
-		{
-			 printf("% d", map->heat[i][j]);
-		}
-		printf("\n");
-	}
-	printf("\n");*/
 }
 
 void	heating(t_map *map, int i, int j, t_valeur *valeur)

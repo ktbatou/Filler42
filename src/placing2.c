@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 02:04:24 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/12/04 03:00:56 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/11 16:47:48 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ void	cords(t_map *map, t_valeur *valeur)
 {
 	int	score;
 
-	score = 0;
 	score = position(map, valeur);
-	if ((score < valeur->temp && score != 0) ||
-	(valeur->flag == 0 && score != 0))
+	if ((score < valeur->temp && score != -404) ||
+	(valeur->flag == 0 && score != -404))
 	{
 		valeur->flag = 1;
 		valeur->temp = score;
@@ -32,7 +31,6 @@ int		score1(int i, int j, t_map *map, t_valeur *valeur)
 {
 	int	score;
 
-	score = 0;
 	score = get_score(i, j, map, valeur);
 	if (score < map->temp || map->flag == 0)
 	{

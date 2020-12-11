@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 22:50:45 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/12/04 02:59:42 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/12/11 16:47:50 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			position(t_map *map, t_valeur *valeur)
 	int	score;
 
 	i = 0;
-	score = 0;
+	score = -404;
 	map->temp = 0;
 	map->flag = 0;
 	while (i < valeur->xp)
@@ -118,11 +118,11 @@ void		print_cords(t_valeur *v)
 	i = 0;
 	x = ft_itoa(v->tokenx);
 	y = ft_itoa(v->tokeny);
-	while (x[i] && i <= 1)
+	while (x[i])
 		write(1, &x[i++], 1);
 	write(1, " ", 1);
 	i = 0;
-	while (y[i] && i <= 1)
+	while (y[i])
 		write(1, &y[i++], 1);
 	write(1, "\n", 1);
 }
